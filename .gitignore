@@ -48,6 +48,7 @@ nbproject
 .svn
 .CVS
 .idea
+node_modules
 
 # Numerous always-ignore extensions #
 #####################################
