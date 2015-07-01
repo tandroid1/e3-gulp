@@ -1,0 +1,5 @@
+source 'https://rubygems.org'
+  
+  #Deployment
+  gem 'capistrano', '2.15.4'  # This is mandatory. 3.x breaks our current Capfiles.
+  gem 'capistrano-multiyaml'  # This is required for config.yml files to work.

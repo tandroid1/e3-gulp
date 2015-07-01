@@ -1,0 +1,12 @@
+<VirtualHost *:80>
+    ServerName {{ site_name }}
+    ServerAlias www.{{ site_name }}
+
+    DocumentRoot /vagrant_data/{{ site_name }}/{{ drupal_root }}
+
+    <Directory /vagrant_data/{{ site_name }}/{{ drupal_root }}>
+        Options All
+        Allow from all
+        AllowOverride All
+    </Directory>
+</VirtualHost>

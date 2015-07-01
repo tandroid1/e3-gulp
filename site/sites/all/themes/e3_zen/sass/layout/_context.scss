@@ -1,0 +1,26 @@
+/**
+ * @file
+ * All styles specific to content layouts
+ */
+
+/* Sidebar Both */
+body.layout-sidebar-both {
+	#sidebar_first {
+		float: left;
+		width: 15%;
+		margin-left: 0;
+		margin-right: -15%;		 
+	}
+	#content {
+		float: left;
+		width: 70%;
+		margin-left: 15%;
+		margin-right: -85%;
+	}
+	#sidebar_second {
+		float: left;
+		width: 15%;
+		margin-left: 85%;
+		margin-right: -100%;
+	}
+}

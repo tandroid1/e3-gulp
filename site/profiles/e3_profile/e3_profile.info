@@ -1,0 +1,55 @@
+name = E3 Install Profile
+description = Standard install for E3 sites.
+version = VERSION
+core = 7.x
+
+; Core Modules
+dependencies[] = block
+dependencies[] = contextual
+dependencies[] = image
+dependencies[] = list
+dependencies[] = menu
+dependencies[] = number
+dependencies[] = options
+dependencies[] = path
+dependencies[] = taxonomy
+dependencies[] = dblog
+dependencies[] = field_ui
+dependencies[] = file
+dependencies[] = rdf
+
+; Contrib Modules
+dependencies[] = admin_devel
+dependencies[] = admin_menu
+dependencies[] = admin_menu_toolbar
+dependencies[] = admin_views
+dependencies[] = backup_migrate
+dependencies[] = ckeditor
+dependencies[] = context
+dependencies[] = context_accordion
+dependencies[] = context_ui
+dependencies[] = ctools
+dependencies[] = devel
+dependencies[] = diff
+dependencies[] = ds
+dependencies[] = entity
+dependencies[] = features
+dependencies[] = filefield_paths
+dependencies[] = field_group
+dependencies[] = field_tools
+dependencies[] = imce
+dependencies[] = link
+dependencies[] = logintoboggan
+dependencies[] = metatag
+dependencies[] = menu_block
+dependencies[] = module_filter
+dependencies[] = password_hustle
+dependencies[] = pathauto
+dependencies[] = pathologic
+dependencies[] = strongarm
+dependencies[] = token
+dependencies[] = transliteration
+dependencies[] = views
+dependencies[] = views_ui
+
+files[] = e3_profile.profile

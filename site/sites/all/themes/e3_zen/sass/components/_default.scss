@@ -1,0 +1,53 @@
+/**
+ * @file
+ * Default styles retained from Zen, delete/edit as necessary
+ */
+
+/**
+* Comments
+*/
+
+.comment { /* Wrapper for a single comment */
+  &.comment-preview { /* Preview of the comment before submitting new or updated comment */
+    background-color: #ffffea; /* Drupal core will use a #ffffea background. See #1110842 */
+  }
+}
+
+.comment-unpublished { /* Unpublished comments */
+  /* background-color: #fff4f4; */ /* Drupal core uses a #fff4f4 background */
+
+  p.unpublished { /* The word "Unpublished" displayed underneath the content. */
+    @include unpublished-div;
+  }
+}
+
+/**
+* Nodes
+*/
+
+.node-unpublished { /* Unpublished nodes */
+  /* background-color: #fff4f4; */ /* Drupal core uses a #fff4f4 background */
+
+  p.unpublished { /* The word "Unpublished" displayed underneath the content. */
+    @include unpublished-div;
+  }
+}
+
+/*
+ * The skip-link link will be completely hidden until a user tabs to the link.
+ * See the element-focusable rule in system.base.css.
+ */
+
+#skip-link {
+  margin: 0;
+
+  a,
+  a:visited {
+    display: block;
+    width: 100%;
+    padding: 2px 0 3px 0;
+    text-align: center;
+    background-color: #666;
+    color: #fff;
+  }
+}

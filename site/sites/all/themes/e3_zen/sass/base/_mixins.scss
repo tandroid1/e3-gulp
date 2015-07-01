@@ -1,0 +1,110 @@
+/**
+ * @file
+ * All mixins available to E3 Zen
+ */
+
+/* E3 Custom */
+
+/* Required for message styles */
+@mixin square($dimensions) {
+  height: $dimensions;
+  width: $dimensions;
+}
+
+// Write responsive image based on pixel density
+// This assumes that sprites are being managed in compass.
+// See link for how to set that up.
+// @see http://compass-style.org/reference/compass/helpers/sprites/
+//
+// @param $sprite - The sprite object.
+// @param $img - The string of the sprite image you want to use.
+//   Remember that for the hi-rez versions, this mixin assumes there
+//   is a file with a -2x suffix.
+// @param $has_layout - Defaults to true. Adds height and width based
+//   on the dimensions of the standard rez version of the image.
+// @param $density - The pixel density used for the media query. Defaults
+//   to 2.
+@mixin hi-rez-bg($sprite, $img, $has_layout: true, $density: 2) {
+  background-image: sprite-url($sprite);
+  background-repeat: no-repeat;
+  background-position: sprite-position($sprite, $img);
+  display: block;
+
+  @if $has_layout {
+    height: image-height(sprite-file($sprite, $img));
+    width: image-width(sprite-file($sprite, $img));
+  }
+
+  @media (-webkit-device-pixel-ratio: $density), (-moz-device-pixel-ratio: $density) {
+    $ypos: nth(sprite-position($sprite, '#{$img}-2x'), 2) / 2;
+    background-position: 0 $ypos;
+    background-size: image-width(sprite-path($sprite)) / 2 auto;
+  }
+}
+
+/* Mixins from Zen base */
+
+/* element-invisible as defined by http://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
+@mixin element-invisible {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+  //@if support-legacy-browser('ie', '7') {
+    clip: rect(1px 1px 1px 1px); // IE6 and IE7 use the wrong syntax.
+//}
+  }
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+/* Turns off the element-invisible effect. */
+@mixin element-invisible-off {
+  position: static !important;
+  clip: auto;
+  height: auto;
+  width: auto;
+  overflow: auto;
+}
+
+@mixin element-focusable {
+  @include element-invisible;
+
+  &:active,
+  &:focus {
+    @include element-invisible-off;
+  }
+}
+
+/* The word "Unpublished" displayed underneath unpublished nodes and comments. */
+@mixin unpublished-div {
+  height: 0;
+  overflow: visible;
+  color: #d8d8d8;
+  font-size: 75px;
+  line-height: 1;
+  font-family: Impact, "Arial Narrow", Helvetica, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  word-wrap: break-word; // A very nice CSS3 property
+
+  @if support-legacy-browser('ie', '7') {
+    .lt-ie8 &>* {
+      position: relative; // Otherwise these elements will appear below the "Unpublished" text.
+    }
+  }
+}
+
+/* Builds CSS triangles */
+@mixin triangle($direction, $size: 5px, $color: '#FFFFFF') {
+  @if not index(top right bottom left, $direction) {
+    @warn "\"#{$direction}\" is not a valid direction value. Value must be one of: top, right, bottom, left";
+  }
+  @else {
+    border: $size solid transparent;
+    border-#{$direction}-color: $color;
+    height: 0;
+    width: 0;
+  }
+}

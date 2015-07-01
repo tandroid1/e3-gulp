@@ -1,0 +1,74 @@
+/**
+ * @file
+ * Custom styles for Drupal's admin tabs.
+ */
+
+ul.primary {
+  font-size: pxtoem(16px);
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  background: $color-tabs-wrap-background;
+  border-bottom: 1px solid $color-tabs-wrap-border;
+  li {
+    list-style: none;
+    float: left;
+    margin-bottom: 0;
+    a {
+      padding: pxtoem(8px, 16px) pxtoem(18px, 16px);
+      background: $color-tabs-link-background;
+      border-top: 5px solid #ffd204;
+      display: block;
+      color: $color-tabs-link;
+      font-weight: normal;
+      text-decoration: none;
+      &:hover,
+      &:active {
+        background: $color-tabs-link-hover-background;
+        color: $color-tabs-link-hover;
+      }
+    }
+  }
+  li:nth-child(odd){
+    a {
+      border-top: 5px solid $color-tabs-link-alt-1;
+      &:hover,
+      &:active {
+        background: $color-tabs-link-alt-1;
+        color: #ffffff;
+      }
+    }
+  }
+  li:nth-child(even) {
+    a {
+      border-top: 5px solid $color-tabs-link-alt-2;
+      &:hover,
+      &:active {
+        background: $color-tabs-link-alt-2;
+        color: #ffffff;
+      }
+    }
+  }
+  li:nth-child(3n) {
+    a {
+      border-top: 5px solid $color-tabs-link-alt-3;
+      &:hover,
+      &:active {
+        background: $color-tabs-link-alt-3;
+        color: #ffffff;
+      }
+    }
+  }
+  li:nth-child(4n) {
+    a {
+      border-top: 5px solid $color-tabs-link-alt-4;
+      &:hover,
+      &:active {
+        background: $color-tabs-link-alt-4;
+        color: #ffffff;
+      }
+    }
+  }
+}

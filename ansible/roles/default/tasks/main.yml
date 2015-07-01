@@ -1,0 +1,19 @@
+---
+  
+- name: ensure vhost is present
+  template: src=vhost.j2 dest=/etc/httpd/conf.d/{{ site_name }}.conf mode=0644
+  notify:
+    - reload httpd
+
+- name: ensure httpd is started
+  service: name=httpd state=started
+
+- name: ensure database is present
+  mysql_db: name={{ database_name }} state=present collation=utf8_general_ci
+
+- name: create a database user
+  mysql_user: name={{ database_user }} password={{ database_pass }} priv={{ database_name }}.*:ALL host=localhost state=present
+
+- name: import database if one is set
+  mysql_db: name={{ database_name }} state=import target={{ database_path }}
+  when: database_path != 'none'

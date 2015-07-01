@@ -1,0 +1,83 @@
+develop: &develop
+  variables: &develop_vars
+    :site_htdocs: "httpdocs"
+    :site_htsdocs: "httpsdocs"
+    :application: "<site_name>"
+    :git_name: "<git_repo_name>"
+    :site_url: "<example.com>"
+    :deploy_via: "remote_cache"
+    :user: "root"
+    :file_owner_user: "root"
+    :web_server_user: "psaserv"
+    :branch: "develop"
+    :site_root: "/var/www/vhosts/elevatedthird.com/#{application}"
+    :deploy_to: "#{site_root}/application"
+  roles:
+    web:
+      "72.10.36.75":
+
+production:
+  <<: *develop
+  variables:
+    <<: *develop_vars
+    :site_htdocs: "htdocs"
+    :site_htsdocs: "htsdocs"
+    :site_url: "<example.com>"
+    :user: "401e"
+    :file_owner_user: "401e"
+    :web_server_user: "apache"
+    :branch: "master"
+    :site_root: "/var/www/#{site_url}"
+    :deploy_to: "#{site_root}/application"
+    # :use_sudo: "true"
+  roles:
+    web:
+      "<ip>":
+    db:
+      "<ip>":
+#
+# Example additional environments
+# PLEASE ABIDE BY NAMING CONVENTIONS FOR PRIMARY BRANCHES
+# - 'develop' is always the general development environment
+# - 'production' is ALWAYS the live site
+#
+# staging:
+#   <<: *develop
+#   variables:
+#     <<: *develop_vars
+#    :branch: "release/<release>"
+# production:
+#   <<: *develop
+#   variables:
+#     <<: *develop_vars
+#     :site_htdocs: "htdocs"
+#     :site_htsdocs: "htsdocs"
+#     :site_url: "<example.com>"
+#     :user: "401e"'
+#     :file_owner_user: "401e"
+#     :web_server_user: "apache"
+#     :branch: "master"
+#     :site_root: "/var/www/#{site_url}"
+#   roles:
+#     web:
+#       "<ip>":
+#     db:
+#       "<ip>":      
+      
+#
+# Example app role with additional argument
+#
+#     app:
+#       '72.10.36.75':
+#         - :primary: true
+
+#
+# Example custom tasks
+#
+#   tasks: &tasks
+#     - type  : after_callback
+#       target: 'deploy:setup'
+#       action: 'fooapp:link_data_path'
+#     - type  : before_callback
+#      target: 'deploy:restart'
+#       action: 'fooapp:run_scripts'

@@ -1,0 +1,25 @@
+---
+
+- hosts: vagrant
+  remote_user: vagrant
+  sudo: yes
+  vars:
+    site_name: <domain.suffix> # ex. oedit.me
+    drupal_root: site # where index.php is, usually site or docroot
+
+    database_name: <db_name>
+    database_user: <db_user>
+    database_pass: <db_pass>
+ 
+  vars_prompt:
+    # Notice: setting database_path will overwrite any db you already have on your vagrant instance
+    - name: "database_path"
+      private: no
+      # the prompt shouldn't ever need to be changed.
+      prompt: "Vagrant path to db for import"
+      # 'none' when there is no db to import, otherwise a path to a local (on vagrant) sql file.
+      # Tip: /vagrant_data/pathtoyoursitedir/db.sql
+      default: none
+
+  roles:
+    - default
