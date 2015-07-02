@@ -51,8 +51,6 @@ audio,
 canvas,
 video {
   display: inline-block;
-  *display: inline;
-  *zoom: 1;
 }
 
 /*
@@ -323,8 +321,6 @@ input[type="submit"] {
   /* 1 */
   -webkit-appearance: button;
   /* 2 */
-  *overflow: visible;
-  /* 3 */
 }
 
 /*
@@ -349,10 +345,6 @@ input[type="radio"] {
   /* 1 */
   padding: 0;
   /* 2 */
-  *height: 13px;
-  /* 3 */
-  *width: 13px;
-  /* 3 */
 }
 
 /*
@@ -418,6 +410,7 @@ table {
 /* element-invisible as defined by http://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
 /* Turns off the element-invisible effect. */
 /* The word "Unpublished" displayed underneath unpublished nodes and comments. */
+/* Builds CSS triangles */
 /**
  * @file
  * All functions available to E3 Zen
@@ -501,6 +494,10 @@ table {
   text-align: center;
   background-color: #666;
   color: #fff;
+}
+
+#page-title {
+  color: green;
 }
 
 /**
